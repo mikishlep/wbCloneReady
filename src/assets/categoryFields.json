@@ -1,0 +1,42 @@
+{
+  "name": "Обувь",
+  "characters_valid": [
+    {
+      "value": "44,45,46,47",
+      "charcName": "Размер обуви",
+      "unitName": "г"
+    },
+    {
+      "value": "",
+      "charcName": "Вес товара без упаковки",
+      "unitName": "г"
+    },
+    {
+      "value": "",
+      "charcName": "Высота предмета",
+      "unitName": "см"
+    },
+    {
+      "value": "",
+      "charcName": "Высота ydrrgr",
+      "unitName": "см"
+    },
+    {
+      "value": "",
+      "charcName": "Марк предмета",
+      "unitName": "см"
+    },
+    {
+      "value": "",
+      "charcName": "Высота марка",
+      "unitName": "см"
+    },
+    {
+      "value": "синий,красный,желтый,черный",
+      "charcName": "Цвет",
+      "unitName": "г"
+    }
+  ],
+  "size_visible": true,
+  "sub_name": ""
+}
