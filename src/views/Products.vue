@@ -106,7 +106,7 @@
                 </div>
                 <div class="product-rating" data-testid="product-rating">
                   <div class="rating-tag" :style="getRatingStyle(product.rating)">
-                      6.5
+                    6.5
                   </div>
                 </div>
               </div>
@@ -725,5 +725,24 @@ td.goodRedact {
   justify-content: center;
   text-align: center;
   width: 72px;
+}
+
+@media (max-width: 768px) {
+  .all-goods-header {
+    flex-direction: column;
+  }
+
+  .add-cards-button {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .tabs-container {
+    margin-left: 0;
+  }
+
+  .tab-item {
+    white-space: nowrap;
+  }
 }
 </style>

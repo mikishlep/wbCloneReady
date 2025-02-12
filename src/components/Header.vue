@@ -25,11 +25,14 @@
         <ul class="HiddenMeasureMenuList__VMh1unnle4">
           <li class="HiddenMeasureMenuList__item__xLBl6xapkw">
             <div class="MenuItemButton__+D4AajqvfT">
+              <router-link to="/add-product">
               <button
                   class="Button-link__M8cSkCOBdn Button-link--button__7DyqvPR1aa Button-link--list-item__04ggM6eg-E Button-link--button-small__l9nh7DMmRk"
                   type="button"><span
                   class="Text__f59jqJ8Q0Y Text--h4__s6ez01K7iD Text--inherit__4x5cTFBWbV Text--white-space-nowrap__du2XUE7-VW"
-                  data-name="Text">Товары</span></button>
+                  data-name="Text">Товары</span>
+              </button>
+              </router-link>
             </div>
           </li>
           <li class="HiddenMeasureMenuList__item__xLBl6xapkw">
@@ -89,7 +92,7 @@
           <li class="MenuList__item__TG4v3eJJLL">
             <div class="MenuItemButton__+D4AajqvfT"><a
                 class="Button-link__M8cSkCOBdn Button-link--button__7DyqvPR1aa Button-link--list-item-active__9GSUMKmmEp Button-link--button-small__l9nh7DMmRk"
-                href="/"><span
+                href="/products"><span
                 class="Text__f59jqJ8Q0Y Text--h4__s6ez01K7iD Text--inherit__4x5cTFBWbV Text--white-space-nowrap__du2XUE7-VW"
                 data-name="Text">Товары</span></a></div>
           </li>

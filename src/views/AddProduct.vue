@@ -3908,4 +3908,110 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@media (max-width: 1024px) {
+  .add-product-components {
+    grid-template-columns: none;
+  }
+
+  .variants-variant {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .variants-media {
+    max-width: 100%;
+    padding: 20px 24px 24px;
+  }
+
+  .uploader-button {
+    width: 100%;
+  }
+
+  .card-form-variants {
+    display: none;
+  }
+
+  .variants-variant-fields {
+    margin-top: 20px;
+  }
+
+  .card-form-widgets {
+    display: none;
+  }
+
+  .card-form-actions {
+    max-width: 100%;
+  }
+
+  .card-form-form-variants {
+    padding: 0;
+  }
+
+  .rich-content-v2 {
+    display: none;
+  }
+
+  .rating-tag {
+    white-space: nowrap;
+  }
+
+  .field-wrapper {
+    padding: 10px 24px;
+  }
+
+  .main-fields-title {
+    padding: 0 24px;
+  }
+
+  .characteristics {
+    padding: 0 24px;
+  }
+
+  #price {
+    padding: 10px 0 0 24px;
+  }
+
+  #skus {
+    padding: 10px 24px 0 0;
+  }
+
+  .sizes-old-title, .dimensions-title, .dimensions-sub-title {
+    padding: 0 24px;
+  }
+
+  .sizes-old-buttons {
+    padding: 0 24px 0 0;
+  }
+
+  .barcode-select-dropdown {
+    width: 190px;
+  }
+
+  #length {
+    padding: 0 0 0 24px;
+  }
+
+  #width {
+    padding: 0;
+  }
+
+  #height {
+    padding: 0 24px 0 0;
+  }
+
+  .variants-certificates {
+    padding: 0 24px;
+  }
+
+  .characteristics-list > .field-wrapper {
+    padding: 0;
+  }
+
+  .supplier-subject-select-dropdown {
+    position: absolute;
+    top: 1150px !important;
+    left: 0 !important;
+  }
+}
 </style>
