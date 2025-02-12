@@ -159,7 +159,7 @@
 
 <script>
 import axios from 'axios';
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = window.BASE_URL || 'http://127.0.0.1:8000';
 
 export default {
   name: 'Products',
