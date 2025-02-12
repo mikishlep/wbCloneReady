@@ -346,52 +346,50 @@ export default {
       // Если imageField уже корректное или парсинг не удался — возвращаем его без изменений
       return imageField;
     },
-    loadProducts() {
-      axios.get(`${baseURL}/api/products`)
+    loadProducts(page = 1) {
+      axios.get(`${baseURL}/api/productss?page=${page}&limit=20`)
           .then(response => {
-            const basicProducts = response.data;
-            // Запрашиваем полные данные по каждому товару
-            const productRequests = basicProducts.map(product => {
-              return axios.get(`${baseURL}/api/products/${product.id}`)
-                  .then(res => res.data)
-                  .catch(err => {
-                    console.error(`Ошибка для товара id ${product.id}:`, err);
-                    return null;
-                  });
-            });
-            Promise.all(productRequests)
-                .then(fullProducts => {
-                  // Фильтруем неудачные запросы
-                  const products = fullProducts.filter(prod => prod !== null);
-                  // Для каждого товара, если задано поле category (число), запрашиваем данные о категории
-                  const categoryRequests = products.map(product => {
-                    if (product.category) {
-                      return axios.get(`${baseURL}/api/catalogs/${product.category}`)
-                          .then(res => {
-                            // Из ответа получаем, например, поле name
-                            // И записываем его в поле, которое выводится как subcategory
-                            product.subcategory = res.data.name;
-                            return product;
-                          })
-                          .catch(err => {
-                            console.error(`Ошибка загрузки категории для товара id ${product.id}:`, err);
-                            return product;
-                          });
-                    } else {
+            const paginatedData = response.data;
+            const basicProducts = paginatedData.data;
+
+            // Запросы для получения категорий
+            const categoryRequests = basicProducts.map(product => {
+              if (product.category) {
+                return axios.get(`${baseURL}/api/catalogs/${product.category}`)
+                    .then(res => {
+                      product.subcategory = res.data.name;
                       return product;
-                    }
-                  });
-                  return Promise.all(categoryRequests);
-                })
+                    })
+                    .catch(err => {
+                      console.error(`Ошибка загрузки категории для товара id ${product.id}:`, err);
+                      return product;
+                    });
+              } else {
+                return Promise.resolve(product);
+              }
+            });
+
+            Promise.all(categoryRequests)
                 .then(updatedProducts => {
-                  this.products = updatedProducts.filter(prod => prod !== null).map(product => ({
+                  const newProducts = updatedProducts.map(product => ({
                     ...product,
-                    stock: Math.floor(Math.random() * 100) // случайное число от 0 до 99
+                    stock: Math.floor(Math.random() * 100),
+                    // Добавляем недостающие поля из структуры ответа
+                    articul: product.articul,
+                    brand: product.brand,
+                    Barcodes: product.Barcodes,
+                    characters_in: product.characters_in,
+                    image: product.image
                   }));
-                  console.log('Обновленные товары:', this.products);
+
+                  this.products = [...this.products, ...newProducts];
+
+                  if (paginatedData.current_page < paginatedData.last_page) {
+                    this.loadProducts(page + 1);
+                  }
                 })
                 .catch(error => {
-                  console.error('Ошибка получения полных данных товаров:', error);
+                  console.error('Ошибка обработки категорий:', error);
                 });
           })
           .catch(error => {

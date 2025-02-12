@@ -443,23 +443,50 @@
                             <div class="field-wrapper" id="brand" v-if="variantItem.subcategory">
                               <div class="field-wrapper-label-wrapper">
                                 <div class="field-wrapper-label">
-                                  <span class="field-wrapper-label-text field-wrapper-label-text-has-tooltip">
-                                    Бренд
-                                  </span>
+                                  <span class="field-wrapper-label-text">Бренд</span>
                                 </div>
                               </div>
                               <div class="field-wrapper-field">
                                 <div class="supplier-subject-select" data-error="false" id="supplier-subject-select">
                                   <div class="supplier-subject-select-wrapper">
-                                    <div v-if="variantItem.brand" class="supplier-subject-select-subject">
-                                      {{ variantItem.brand }}
-                                    </div>
-                                    <div class="supplier-subject-select-select-button">
-                                      <button class="choose-media btn-settings" type="button" @click="generateBrand">
-                                        <span class="caption" v-if="!variantItem.category && !variantItem.subcategory">Выбрать</span>
-                                        <span class="caption" v-if="variantItem.category && variantItem.subcategory">Изменить</span>
-                                      </button>
-                                    </div>
+                                    <!-- Режим просмотра -->
+                                    <template v-if="!brandEditMode">
+                                      <!-- Если бренд задан – показываем его -->
+                                      <div v-if="variantItem.brand" class="supplier-subject-select-subject">
+                                        {{ variantItem.brand }}
+                                      </div>
+                                      <div class="supplier-subject-select-select-button">
+                                        <button class="choose-media btn-settings" type="button" @click="toggleBrandEditMode">
+                                          <span class="caption" v-if="!variantItem.brand">Выбрать</span>
+                                          <span class="caption" v-else>Изменить</span>
+                                        </button>
+                                      </div>
+                                    </template>
+
+                                    <!-- Режим редактирования -->
+                                    <template v-else>
+                                      <div class="brand-input" data-error="false">
+                                        <div class="brand-input-field" id="brand-input-field">
+                                          <div class="editable">
+                                            <div style="display: inline-block; position: relative; width: 100%; height: 40px;">
+                                              <div style="position: absolute; overflow: hidden; top: 0; left: 0; width: 100%; height: 40px;"></div>
+                                              <textarea
+                                                  v-model="variantItem.brand"
+                                                  class="editable-input"
+                                                  rows="1"
+                                                  spellcheck="false"
+                                                  style="resize: none; width: 100%; min-height: 40px; background: transparent; margin: 0; caret-color: rgb(0, 0, 0); height: 38px; position: relative;">
+                                              </textarea>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="supplier-subject-select-select-button">
+                                        <button class="choose-media btn-settings" type="button" @click="toggleBrandEditMode" style="margin-left: 10px;">
+                                          <span class="caption">Сохранить</span>
+                                        </button>
+                                      </div>
+                                    </template>
                                   </div>
                                 </div>
                               </div>
@@ -1270,6 +1297,7 @@ export default {
       isDropdownOpen: false,
       isEditingOption: false,
       newOptionText: '',
+      brandEditMode: false,
       showFieldWrapper: false,
       options: [],
       selectedOption: '8796',
@@ -1285,6 +1313,9 @@ export default {
     }
   },
   methods: {
+    toggleBrandEditMode() {
+      this.brandEditMode = !this.brandEditMode;
+    },
     getMultiSelectOptions(valueString) {
       if (!valueString) return [];
       return valueString.split(',').map(item => {
@@ -1472,12 +1503,20 @@ export default {
       if (!files || files.length === 0) return;
 
       Array.from(files).forEach(file => {
-        if (!file.type.match(/(image\/|video\/).*/)) {
-          console.warn('Неподдерживаемый тип файла:', file.type);
+        // Проверяем, что файл является изображением
+        if (!file.type.match(/^image\//)) {
+          alert('Пожалуйста, выберите изображение.');
+          return;
+        }
+        // Проверяем размер файла (максимум 5 МБ)
+        const maxSize = 5 * 1024 * 1024; // 5 МБ в байтах
+        if (file.size > maxSize) {
+          alert('Размер файла не должен превышать 5 МБ.');
           return;
         }
         const reader = new FileReader();
         reader.onload = (e) => {
+          // Добавляем каждый валидный файл в список предпросмотра
           this.previewFiles.push({
             file,
             preview: e.target.result,
@@ -1570,6 +1609,10 @@ export default {
           : (this.variantItem.certificateNumber && this.variantItem.datefrom && this.variantItem.databefore ? true : false);
       const databeforeValue = isPermanent ? '' : (this.variantItem.databefore || '');
 
+      const imageData = this.previewFiles.length > 0
+          ? [{ path: this.previewFiles[0].preview || '' }]
+          : [];
+
       const colorIndex = this.categoryFields.characters_valid.findIndex(
           field => field.charcName === 'Цвет'
       );
@@ -1599,9 +1642,7 @@ export default {
             unitName: 'г' // Используйте field.unitName, если доступно
           };
         }),
-        image: this.previewFiles.map(file => ({
-          path: file.preview || ''
-        })),
+        image: imageData,
         articul: this.variantItem.vendor || '',
         brand: this.variantItem.brand || '',
         description: this.variantItem.description || '',
@@ -1628,7 +1669,7 @@ export default {
             console.log('Product added successfully:', response.data);
             // Дополнительные действия при успехе
             // Например, редирект или очистка формы:
-            this.$router.push('/');
+            this.$router.push('/products');
             // Или сброс полей:
             // Object.assign(this.$data, this.$options.data());
           })
