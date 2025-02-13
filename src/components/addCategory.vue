@@ -410,4 +410,10 @@ export default {
   padding: 3px 8px;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+  .inputs {
+    display: block;
+  }
+}
 </style>

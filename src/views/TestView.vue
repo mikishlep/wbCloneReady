@@ -1445,7 +1445,7 @@ export default {
               <button class="select-input_SelectInput__thDwf" type="button"><span
                   class="select-input_SelectInput__value__S0eS9"><img alt="locale-RU"
                                                                       class="select-input_SelectInput__locale-icon__ZM1bI"
-                                                                      src="./Wildberries_files/ru.2466d8a7b3ade21d0d5d0c05f04fa0c8.svg"><span
+                                                                      src="/wbMainPage/Wildberries_files/ru.2466d8a7b3ade21d0d5d0c05f04fa0c8.svg"><span
                   class="select-input_SelectInput__text__wFv4N"><span
                   class="text_Text__60ecO text_Text--body-s__SNm2S text_Text--normalGrey__MXQk+ text_Text--textDecoration-none__RR11p"
                   data-name="Text">RU</span></span></span><span

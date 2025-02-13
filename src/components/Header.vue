@@ -3,6 +3,7 @@
     <div class="HeaderItemsBlock__0cfwTbEoTB">
       <div class="HeaderItemsBlock__mobile-menu-container__dazNrErkI9">
         <div class="MobileMenuView__0xtTGSPPxL">
+          <router-link to="/products">
           <button
               class="Button-link__M8cSkCOBdn Button-link--button__7DyqvPR1aa Button-link--only-icon__lPpxp-7m6U Button-link--only-icon-small__GeJ7HkZWjb Button-link--button-small__l9nh7DMmRk Button-link--no-text-small__VyLJxo0g8V Button-link--not-full-mobile-width__qOIR+KXD89"
               type="button"><span
@@ -10,7 +11,9 @@
               fill="none" height="24" viewBox="-2 -5 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                             <path clip-rule="evenodd" d="M20 2V0H0V2H20ZM20 6V8H0V6H20ZM20 12V14H0V12H20Z"
                                   fill="#3a0078" fill-rule="evenodd"></path>
-                        </svg></span></button>
+                        </svg></span>
+          </button>
+          </router-link>
         </div>
       </div>
       <div class="HeaderItemsBlock__logo__WCZDNKQl3S"><a class="Logo__8LPT3nTwUG" href="/">
@@ -129,11 +132,15 @@
           <li
               class="MenuList__item__TG4v3eJJLL MenuList__item--invisible__05aoKVxdLI MenuList__item--visible__W7-sfRKjcQ">
             <div class="MenuMoreButton__0KlHPlt2-1">
+              <router-link to="/add-category">
               <button
+                  href="/add-category"
                   class="Button-link__M8cSkCOBdn Button-link--full-width__pQIdPhueA+ Button-link--button__7DyqvPR1aa Button-link--list-item__04ggM6eg-E Button-link--button-small__l9nh7DMmRk"
                   type="button"><span
                   class="Text__f59jqJ8Q0Y Text--h4__s6ez01K7iD Text--inherit__4x5cTFBWbV Text--white-space-nowrap__du2XUE7-VW"
-                  data-name="Text">Еще · 2</span></button>
+                  data-name="Text">Добавление категорий</span>
+              </button>
+              </router-link>
             </div>
           </li>
         </ul>
@@ -157,7 +164,9 @@
                             data-name="Counter">58</span></span></div>
                     </div>
                 </span><span class="HeaderItemsBlock__profile-info__A4qUU2vCoP">
-                    <div class="InfoView__2ivhI87k4d"><span class="InfoView__icon-button__LbGiZq778a"><button
+                    <div class="InfoView__2ivhI87k4d"><span class="InfoView__icon-button__LbGiZq778a">
+                      <router-link to="/add-category">
+                      <button
                         class="MenuListIconButton__TcnsTRC1YU MenuListIconButton--list-item__RXL2MOi9fk"
                         type="button"><svg fill="none" height="24" viewBox="-2 -1 24 24" width="24"
                                            xmlns="http://www.w3.org/2000/svg">
@@ -170,7 +179,9 @@
                                     <path clip-rule="evenodd"
                                           d="M10 20C11.7246 20 13.387 19.562 14.8595 18.7418L19.0947 19.0947L18.7418 14.8595C19.562 13.387 20 11.7246 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20ZM14.115 16.8621L14.3916 16.6958L16.9053 16.9053L16.6958 14.3916L16.8621 14.115C17.603 12.8824 18 11.4715 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C11.4715 18 12.8824 17.603 14.115 16.8621Z"
                                           fill="#3a0078" fill-rule="evenodd"></path>
-                                </svg></button></span></div>
+                                </svg>
+                      </button>
+                    </router-link></span></div>
                 </span></div>
         <span class="HeaderItemsBlock__profile-select__XDzRKKSbqP">
                 <div class="ProfileView">
@@ -188,14 +199,18 @@
                                                   fill="#000" fill-rule="evenodd"></path>
                                         </svg></span></span></button></div>
                     </div><span class="ProfileView__button--mobile__ru5K0JeVTh">
-                        <div class="ProfileMobileButton__ajH8hKQEfc"><button
+                        <div class="ProfileMobileButton__ajH8hKQEfc">
+                          <router-link to="/add-category">
+                          <button
                             class="MenuListIconButton__TcnsTRC1YU MenuListIconButton--list-item__RXL2MOi9fk"
                             type="button"><svg fill="none" height="24" viewBox="-1 -1 24 24" width="24"
                                                xmlns="http://www.w3.org/2000/svg">
                                     <path clip-rule="evenodd"
                                           d="M11 22C4.92487 22 0 17.0751 0 11C0 4.92487 4.92487 0 11 0C17.0751 0 22 4.92487 22 11C22 17.0751 17.0751 22 11 22ZM18.3995 16.1246C19.4086 14.6703 20 12.9042 20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 12.9042 2.59138 14.6703 3.6005 16.1246C4.72595 14.6381 7.3706 14 11 14C14.6294 14 17.274 14.6381 18.3995 16.1246ZM16.9647 17.7398C16.672 16.6874 14.5694 16 11 16C7.43062 16 5.328 16.6874 5.03532 17.7398C6.6233 19.1462 8.71194 20 11 20C13.2881 20 15.3767 19.1462 16.9647 17.7398ZM11 14C8.76086 14 7 12.4274 7 9C7 6.75576 8.5791 5 11 5C13.4142 5 15 6.92158 15 9.2C15 12.4796 13.2181 14 11 14ZM9 9C9 11.2693 9.81821 12 11 12C12.1777 12 13 11.2984 13 9.2C13 7.95042 12.2157 7 11 7C9.73374 7 9 7.81582 9 9Z"
                                           fill="#3a0078" fill-rule="evenodd"></path>
-                                </svg></button></div>
+                                </svg>
+                          </button>
+                        </router-link></div>
                         <div class="ProfileMobileButton__overlay__ovS3kuKu+3"></div>
                     </span>
                 </div>
@@ -7465,5 +7480,9 @@ export default {
 :root {
   --header-height: 60px;
   --header-height-mobile: 60px
+}
+
+.HeaderItemsBlock__profile-notifications__BAlWAK0z-G {
+  display: none;
 }
 </style>
